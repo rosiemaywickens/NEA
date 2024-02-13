@@ -21,7 +21,7 @@ namespace WindowsFormsApp1.Logic
             return wordresult;
         }
 
-        internal static string createsalt()
+        internal static string Createsalt()
         {
             int length = 32;
             byte[] chomps = new byte[length];

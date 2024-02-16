@@ -109,6 +109,13 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SQL\Account.cs" />
     <Compile Include="SQL\Database.cs" />
+    <Compile Include="SQL\Stock.cs" />
+    <Compile Include="UI\CheckStock.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\CheckStock.Designer.cs">
+      <DependentUpon>CheckStock.cs</DependentUpon>
+    </Compile>
     <Compile Include="UI\InputPrescription.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -120,6 +127,12 @@
     </Compile>
     <Compile Include="UI\MainScreen.Designer.cs">
       <DependentUpon>MainScreen.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\ManageStock.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\ManageStock.Designer.cs">
+      <DependentUpon>ManageStock.cs</DependentUpon>
     </Compile>
     <Compile Include="UI\SearchPrescriptions.cs">
       <SubType>UserControl</SubType>
@@ -139,11 +152,17 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="UI\CheckStock.resx">
+      <DependentUpon>CheckStock.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UI\InputPrescription.resx">
       <DependentUpon>InputPrescription.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\MainScreen.resx">
       <DependentUpon>MainScreen.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\ManageStock.resx">
+      <DependentUpon>ManageStock.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\SearchPrescriptions.resx">
       <DependentUpon>SearchPrescriptions.cs</DependentUpon>
@@ -162,6 +181,8 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="parts of the app\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

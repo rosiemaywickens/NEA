@@ -25,7 +25,7 @@ namespace WindowsFormsApp1.SQL
         /// <param name="username"></param>
         /// <param name="password"></param>
         /// <param name="accessLevel"></param>
-        /// <param name="salt"></param>
+        /// <param name="Salt"></param>
         /// <returns></returns>
         public static void CreateAccount(string username, string password, int accessLevel)
         {

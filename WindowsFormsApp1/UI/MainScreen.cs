@@ -16,7 +16,7 @@ namespace WindowsFormsApp1.UI
 
         public enum Screen
         {
-            InputPrescription, SearchPrescription
+            InputPrescription, SearchPrescription, CheckStock, ManageStock
         }
 
         public MainScreen()
@@ -43,7 +43,15 @@ namespace WindowsFormsApp1.UI
                     //
                     userControl = new SearchPrescriptions();
                     break;
-               
+                case Screen.CheckStock:
+                    //
+                    userControl = new CheckStock();
+                    break;
+                case Screen.ManageStock:
+                    //
+                    userControl = new ManageStock();
+                    break;
+
             }
 
             this.splitContainer1.Panel2.Controls.Add(userControl);
@@ -62,8 +70,12 @@ namespace WindowsFormsApp1.UI
 
         private void button3_Click(object sender, EventArgs e)
         {
-            string x = Hashing.GenerateHash("rosie2", "rose");
+            SwitchScreeen(Screen.CheckStock);
         }
 
+        private void button4_Click(object sender, EventArgs e)
+        {
+            SwitchScreeen(Screen.ManageStock);
+        }
     }
 }

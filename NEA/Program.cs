@@ -1,12 +1,19 @@
 ﻿using MySql.Data.MySqlClient;
 using Org.BouncyCastle.Tls;
 using System;
+using static System.Net.Mime.MediaTypeNames;
 
 
 namespace NEAcode
 {
     public class main
     {
+
+        static void Main()
+        {
+            
+        }
+
         public main() : base()
         {
             //try

@@ -75,7 +75,8 @@ namespace WindowsFormsApp1.SQL
                 {
                     if (reader.Read())
                     {
-                        CreateAccountFromDbRow(reader);
+                        Account account = CreateAccountFromDbRow(reader);
+                        result.Add(account);
                     }
                 }
             }
@@ -102,7 +103,8 @@ namespace WindowsFormsApp1.SQL
                 {
                     if (reader.Read())
                     {
-                        CreateAccountFromDbRow(reader);
+                        Account account = CreateAccountFromDbRow(reader);
+                        result.Add(account);
                     }
                 }
             }
@@ -116,13 +118,14 @@ namespace WindowsFormsApp1.SQL
         /// turn row into object
         /// </summary>
         /// <param name="reader"></param>
-        private static void CreateAccountFromDbRow(MySqlDataReader reader)
+        private static Account CreateAccountFromDbRow(MySqlDataReader reader)
         {
             Account account = new Account();
             account.UserName = reader.GetString("UserName");
             account.Password = reader.GetString("Password");
             account.AccessLevel = reader.GetInt32("accessLevel");
             account.Salt = reader.GetString("salt");
+            return account;
         }
 
     }

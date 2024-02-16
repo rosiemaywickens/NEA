@@ -16,5 +16,10 @@ namespace WindowsFormsApp1.UI
         {
             InitializeComponent();
         }
+
+        private void surnamecheck_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

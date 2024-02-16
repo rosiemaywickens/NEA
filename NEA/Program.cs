@@ -7,7 +7,7 @@ namespace NEAcode
 {
     public class main
     {
-        public main () : base()
+        public main() : base()
         {
             //try
             //{
@@ -24,13 +24,14 @@ namespace NEAcode
             //        command.ExecuteNonQuery();
             //    }
             //}
+        }
+
+        public class LogInPage
+        {
+
+        }
+
     }
-
-    public class LogInPage 
-    {
-
-    }
-
 }
 
 

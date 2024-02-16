@@ -21,7 +21,7 @@ namespace WindowsFormsApp1.SQL
             using (connection) 
             {
                 connection.Open();
-                string query = "INSERT INTO `neaschema`.`stock` ( `MedicineId`, `LocationId`, `amount`, ) VALUES (@medicine, @location, @amount);\r\n";
+                string query = "INSERT INTO `neaschema`.`stock` ( `MedicineId`, `locationId`, `amount`, ) VALUES (@medicine, @location, @amount);\r\n";
                 MySqlCommand command = new MySqlCommand(query, connection);
 
                 command.Parameters.AddWithValue("@medicine", medicineID);
@@ -30,8 +30,6 @@ namespace WindowsFormsApp1.SQL
                  
                 command.ExecuteNonQuery();
               
-
-
             }
             
         }

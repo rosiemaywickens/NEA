@@ -19,24 +19,14 @@ namespace WindowsFormsApp1.UI
         public ManageStock()
         {
             InitializeComponent();
-        
-        
             errorbox.Visible = false;
-        
-        
-        
-        
-        
-        
-        
         }
 
+        public int ValidatedMedicineId { get; private set; }
+        public int ValidatedLocationId { get; private set; }
+        public int ValidatedAmount { get; private set; }
 
-       
-        
-
-
-
+        private bool allInputsValid = false;
 
 
         private void label1_Click(object sender, EventArgs e)
@@ -86,57 +76,84 @@ namespace WindowsFormsApp1.UI
         private void eneterbut_Click(object sender, EventArgs e)
         {
             errorbox.Visible = false;
-            string medicineid = this.medidbox.Text.Trim();
+            allInputsValid = false;
+
+            if (ValidateMedicineId(medidbox.Text.Trim()) &&
+                ValidateLocationId(lidbox.Text.Trim()) &&
+                ValidateAmount(AmountBox.Text.Trim()))
+            {
+                allInputsValid = true;
+
+                // Set public properties with the validated values
+                ValidatedMedicineId = Convert.ToInt32(medidbox.Text);
+                ValidatedLocationId = Convert.ToInt32(lidbox.Text);
+                ValidatedAmount = Convert.ToInt32(AmountBox.Text);
+
+                // If all validations pass, add stock
+                Stock.addstock(ValidatedMedicineId, ValidatedLocationId, ValidatedAmount);
+            }
+        }
+
+        private bool ValidateMedicineId(string medicineId)
+        {
             try
             {
-                int fmed =  Convert.ToInt32(medicineid);
-                if  (medicineid.Length != 4)
+                int fmed = Convert.ToInt32(medicineId);
+                if (medicineId.Length != 4)
                 {
-                errorbox.Text = ("ERROR MedicineID.(4 digit integer must be entered)");
-
+                    ShowError("ERROR MedicineID. (4 digit integer must be entered)");
+                    return false;
                 }
             }
             catch (Exception)
             {
-                errorbox.Visible = true;
-                errorbox.Text = ("ERROR medicineID. (4 digit integer must be entered)");
-               
+                ShowError("ERROR medicineID. (4 digit integer must be entered)");
+                return false;
             }
 
-            string locationid =  this.lidbox.Text.Trim();
+            return true;
+        }
+
+        private bool ValidateLocationId(string locationId)
+        {
             try
             {
-                int lid = Convert.ToInt32(locationid);
+                int lid = Convert.ToInt32(locationId);
             }
             catch
             {
-                errorbox.Visible= true;
-                errorbox.AppendText("     LocationID error(integer must be entered). ");
+                ShowError("LocationID error (integer must be entered).");
+                return false;
             }
-            string am = AmountBox.Text.Trim();
+
+            return true;
+        }
+
+        private bool ValidateAmount(string amount)
+        {
             try
             {
-                int Amount = Convert.ToInt32(am);
+                int Amount = Convert.ToInt32(amount);
             }
             catch
             {
-                errorbox.Visible= true;
-                errorbox.AppendText("you must enter an integer into thge amount box");
-            } 
-            if (errorbox.Visible == false)
-            {
-                Stock.addstock(fmed, lid,  Amount);
+                ShowError("Amount error (must enter integer)");
+                return false;
             }
 
-            
-                
-        
+            return true;
+        }
+
+        private void ShowError(string errorMessage)
+        {
+            errorbox.Visible = true;
+            errorbox.AppendText(errorMessage + Environment.NewLine);
         }
 
         private void errorbox_TextChanged(object sender, EventArgs e)
         {
-            
+
         }
     }
-
 }
+

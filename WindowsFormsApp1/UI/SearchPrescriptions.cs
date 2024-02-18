@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Google.Protobuf.WellKnownTypes;
+using System;
 using System.Collections.ObjectModel;
 using System.Windows.Forms;
 using WindowsFormsApp1.SQL;
@@ -24,6 +25,7 @@ namespace WindowsFormsApp1.UI
         private void prenum_CheckedChanged(object sender, EventArgs e)
         {
             surnamecheck.Checked = false;
+
         }
 
         private void searchbox_TextChanged(object sender, EventArgs e)
@@ -64,23 +66,19 @@ namespace WindowsFormsApp1.UI
 
             if (surnamecheck.Checked)
             {
-                prescriptions.Listbycustomersurname(searched);
+                
                 searcherrors.Visible = false;
+
 
 
                 resultsgrid.Rows.Clear();
 
-
-                ReadOnlyCollection<prescriptions> prescriptionsList = prescriptions.Listbycustomersurname("YourCustomerSurname");
+                ReadOnlyCollection<prescriptions> prescriptionsList = prescriptions.Listbycustomersurname(searched);
 
                 foreach (prescriptions prescription in prescriptionsList)
                 {
 
-                    resultsgrid.Rows.Add(
-                        prescription.PrescriptionId,
-                        prescription.MedicineID,
-                        prescription.ExpiryDate,
-                        prescription.CustomerSurname);
+                    PopulateResultsGrid(prescription);
 
 
                 }
@@ -89,26 +87,22 @@ namespace WindowsFormsApp1.UI
             {
                 if (!validateprescriptionnumber(searched))
                 {
-                    searcherrors.Text = ("to searchby presription number you must enter an 8 digit number");
+                    searcherrors.Text = ("to search by presription number you must enter an 8 digit number");
                 }
                 else
                 {
                     searcherrors.Visible = false;
 
 
-                    resultsgrid.Rows.Clear();
 
+                    resultsgrid.Rows.Clear();
 
                     ReadOnlyCollection<prescriptions> prescriptionsList = prescriptions.Listbyprescriptionnumber(Convert.ToInt32(searched));
 
                     foreach (prescriptions prescription in prescriptionsList)
                     {
 
-                        resultsgrid.Rows.Add(
-                            prescription.PrescriptionId,
-                            prescription.MedicineID,
-                            prescription.ExpiryDate,
-                            prescription.CustomerSurname);
+                        PopulateResultsGrid(prescription);
 
 
                     }
@@ -129,5 +123,16 @@ namespace WindowsFormsApp1.UI
         {
             //
         }
+        private void PopulateResultsGrid(prescriptions prescription)
+        {
+            resultsgrid.Rows.Add(
+                prescription.PrescriptionID,
+                prescription.MedicineID,
+                prescription.ExpiryDate,
+                prescription.CustomerSurname);
+        }
+
+
+
     }
 }

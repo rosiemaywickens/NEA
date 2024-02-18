@@ -13,26 +13,26 @@ namespace WindowsFormsApp1.SQL
 {
     internal class prescriptions
     {
-        public int PrescriptionId { get; set; }
+        public int PrescriptionID { get; set; }
         public int MedicineID { get; set; }
-        public DateTime ExpiryDate { get; set; }
+        public string ExpiryDate { get; set; }
         public string CustomerSurname { get; set; }
 
 
 
-        public static void Addprescriptions(int PrescriptionId, int MedicineID, DateTime ExpiryDate, string CustomerSurname)
+        public static void Addprescriptions(int PrescriptionID, int MedicineID, string ExpiryDate, string CustomerSurname)
         {
-            string x = ExpiryDate.ToString("yyyy-MM-dd ");
+            
             MySqlConnection connection = Database.Connection();
             using (connection)
             {
                 connection.Open();
-                string query = "INSERT INTO `neaschema`.`prescriptions` ( `PrescriptionID`,`MedicineID`, `ExpiryDate`, `CustomerSurname` ) VALUES (@medicine, @location, @amount);\r\n";
+                string query = "INSERT INTO `neaschema`.`prescriptions` ( `PrescriptionID`,`MedicineID`, `ExpiryDate`, `CustomerSurname` ) VALUES (@PrescriptionID,@MedicineID,@ExpiryDate,@Customersurname);\r\n";
                 MySqlCommand command = new MySqlCommand(query, connection);
 
-                command.Parameters.AddWithValue("@PrescriptionID", PrescriptionId);
+                command.Parameters.AddWithValue("@PrescriptionID", PrescriptionID);
                 command.Parameters.AddWithValue("@MedicineID", MedicineID);
-                command.Parameters.AddWithValue("@ExpiryDate", x);
+                command.Parameters.AddWithValue("@ExpiryDate", ExpiryDate);
                 command.Parameters.AddWithValue("@CustomerSurname", CustomerSurname);
 
                 command.ExecuteNonQuery();
@@ -48,7 +48,7 @@ namespace WindowsFormsApp1.SQL
             using (connection2)
             {
                 connection2.Open();
-                string query = "SELECT * FROM `neaschema`.`prescriptions` WHERE PresciptionID = @prescriptionid";
+                string query = "SELECT * FROM `neaschema`.`prescriptions` WHERE PrescriptionID = @PrescriptionID";
                 MySqlCommand command = new MySqlCommand(query, connection2);
                 command.Parameters.AddWithValue("@PrescriptionID", prescriptionid);
 
@@ -68,11 +68,13 @@ namespace WindowsFormsApp1.SQL
 
         private static prescriptions CreatePrescriptionFromDbRow(MySqlDataReader reader)
         {
-            prescriptions prescription = new prescriptions();
-            prescription.PrescriptionId = reader.GetInt32("PresciptionID");
-            prescription.MedicineID = reader.GetInt32("MedicineID");
-            prescription.ExpiryDate = reader.GetDateTime("ExpiryDate");
-            prescription.CustomerSurname = reader.GetString("customerSurname");
+            prescriptions prescription = new prescriptions
+            {
+                PrescriptionID = reader.GetInt32("PrescriptionID"),
+                MedicineID = reader.GetInt32("MedicineID"),
+                ExpiryDate = reader.GetString("ExpiryDate"),
+                CustomerSurname = reader.GetString("Customersurname")
+            };
             return prescription;
         }
         public static ReadOnlyCollection<prescriptions> Listbycustomersurname(string customersurname)

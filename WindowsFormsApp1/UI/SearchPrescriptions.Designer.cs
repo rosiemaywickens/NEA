@@ -111,7 +111,7 @@
             this.resultsgrid.Name = "resultsgrid";
             this.resultsgrid.RowHeadersWidth = 82;
             this.resultsgrid.RowTemplate.Height = 33;
-            this.resultsgrid.Size = new System.Drawing.Size(885, 290);
+            this.resultsgrid.Size = new System.Drawing.Size(1079, 290);
             this.resultsgrid.TabIndex = 7;
             this.resultsgrid.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.resultsgrid_CellContentClick);
             // 

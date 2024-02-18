@@ -120,11 +120,13 @@ namespace WindowsFormsApp1.SQL
         /// <param name="reader"></param>
         private static Account CreateAccountFromDbRow(MySqlDataReader reader)
         {
-            Account account = new Account();
-            account.UserName = reader.GetString("UserName");
-            account.Password = reader.GetString("Password");
-            account.AccessLevel = reader.GetInt32("accessLevel");
-            account.Salt = reader.GetString("salt");
+            Account account = new Account
+            {
+                UserName = reader.GetString("UserName"),
+                Password = reader.GetString("Password"),
+                AccessLevel = reader.GetInt32("accessLevel"),
+                Salt = reader.GetString("salt")
+            };
             return account;
         }
 

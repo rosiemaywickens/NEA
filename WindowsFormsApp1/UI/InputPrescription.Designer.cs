@@ -145,6 +145,7 @@
             this.errorbox2.Name = "errorbox2";
             this.errorbox2.Size = new System.Drawing.Size(302, 215);
             this.errorbox2.TabIndex = 11;
+            this.errorbox2.TextChanged += new System.EventHandler(this.errorbox2_TextChanged);
             // 
             // InputPrescription
             // 

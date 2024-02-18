@@ -182,9 +182,10 @@ namespace WindowsFormsApp1.UI
         {
 
         }
-    
-    
-    
-    
+
+        private void errorbox2_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

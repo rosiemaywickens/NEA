@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Collections.ObjectModel;
 using System.Windows.Forms;
+using WindowsFormsApp1.SQL;
 
 namespace WindowsFormsApp1.UI
 {
@@ -60,35 +62,72 @@ namespace WindowsFormsApp1.UI
 
             }
 
-            if (surnamecheck.Checked) 
-            { 
+            if (surnamecheck.Checked)
+            {
+                prescriptions.Listbycustomersurname(searched);
+                searcherrors.Visible = false;
 
-           
+
+                resultsgrid.Rows.Clear();
+
+
+                ReadOnlyCollection<prescriptions> prescriptionsList = prescriptions.Listbycustomersurname("YourCustomerSurname");
+
+                foreach (prescriptions prescription in prescriptionsList)
+                {
+
+                    resultsgrid.Rows.Add(
+                        prescription.PrescriptionId,
+                        prescription.MedicineID,
+                        prescription.ExpiryDate,
+                        prescription.CustomerSurname);
+
+
+                }
             }
-            else if(prenum.Checked)
+            else if (prenum.Checked)
             {
                 if (!validateprescriptionnumber(searched))
                 {
                     searcherrors.Text = ("to searchby presription number you must enter an 8 digit number");
                 }
+                else
+                {
+                    searcherrors.Visible = false;
 
-            
+
+                    resultsgrid.Rows.Clear();
+
+
+                    ReadOnlyCollection<prescriptions> prescriptionsList = prescriptions.Listbyprescriptionnumber(Convert.ToInt32(searched));
+
+                    foreach (prescriptions prescription in prescriptionsList)
+                    {
+
+                        resultsgrid.Rows.Add(
+                            prescription.PrescriptionId,
+                            prescription.MedicineID,
+                            prescription.ExpiryDate,
+                            prescription.CustomerSurname);
+
+
+                    }
+                }
             }
-            else 
+            else
             {
                 searcherrors.Text = ("you must check atleast one box");
-            }
-        
-        
-        
-        
-        
-        
+            }       
         }
 
         private void SearchPrescriptions_Load(object sender, EventArgs e)
         {
             searcherrors.Visible = false;
+        }
+
+        private void resultsgrid_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            //
         }
     }
 }

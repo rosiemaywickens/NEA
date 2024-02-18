@@ -34,6 +34,12 @@
             this.searchbox = new System.Windows.Forms.TextBox();
             this.enbut = new System.Windows.Forms.Button();
             this.searcherrors = new System.Windows.Forms.Label();
+            this.resultsgrid = new System.Windows.Forms.DataGridView();
+            this.q = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.w = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.e = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.r = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            ((System.ComponentModel.ISupportInitialize)(this.resultsgrid)).BeginInit();
             this.SuspendLayout();
             // 
             // surnamecheck
@@ -93,10 +99,55 @@
             this.searcherrors.Size = new System.Drawing.Size(0, 25);
             this.searcherrors.TabIndex = 6;
             // 
+            // resultsgrid
+            // 
+            this.resultsgrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.resultsgrid.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.q,
+            this.w,
+            this.e,
+            this.r});
+            this.resultsgrid.Location = new System.Drawing.Point(56, 330);
+            this.resultsgrid.Name = "resultsgrid";
+            this.resultsgrid.RowHeadersWidth = 82;
+            this.resultsgrid.RowTemplate.Height = 33;
+            this.resultsgrid.Size = new System.Drawing.Size(885, 290);
+            this.resultsgrid.TabIndex = 7;
+            this.resultsgrid.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.resultsgrid_CellContentClick);
+            // 
+            // q
+            // 
+            this.q.HeaderText = "PrescriptionID";
+            this.q.MinimumWidth = 10;
+            this.q.Name = "q";
+            this.q.Width = 200;
+            // 
+            // w
+            // 
+            this.w.HeaderText = "MedicineID";
+            this.w.MinimumWidth = 10;
+            this.w.Name = "w";
+            this.w.Width = 200;
+            // 
+            // e
+            // 
+            this.e.HeaderText = "ExpiryDate";
+            this.e.MinimumWidth = 10;
+            this.e.Name = "e";
+            this.e.Width = 200;
+            // 
+            // r
+            // 
+            this.r.HeaderText = "customersurname";
+            this.r.MinimumWidth = 10;
+            this.r.Name = "r";
+            this.r.Width = 200;
+            // 
             // SearchPrescriptions
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.resultsgrid);
             this.Controls.Add(this.searcherrors);
             this.Controls.Add(this.enbut);
             this.Controls.Add(this.searchbox);
@@ -106,6 +157,7 @@
             this.Name = "SearchPrescriptions";
             this.Size = new System.Drawing.Size(1504, 1064);
             this.Load += new System.EventHandler(this.SearchPrescriptions_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.resultsgrid)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -119,5 +171,10 @@
         private System.Windows.Forms.TextBox searchbox;
         private System.Windows.Forms.Button enbut;
         private System.Windows.Forms.Label searcherrors;
+        private System.Windows.Forms.DataGridView resultsgrid;
+        private System.Windows.Forms.DataGridViewTextBoxColumn q;
+        private System.Windows.Forms.DataGridViewTextBoxColumn w;
+        private System.Windows.Forms.DataGridViewTextBoxColumn e;
+        private System.Windows.Forms.DataGridViewTextBoxColumn r;
     }
 }

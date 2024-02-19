@@ -5,6 +5,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -46,38 +47,34 @@ namespace WindowsFormsApp1
             // get account 
             ReadOnlyCollection<Account> accountsMatchingUserName = Account.ListByUserName(username);
 
-            // at least 1 returned?
-            if(accountsMatchingUserName.Count > 0 )
+            if (accountsMatchingUserName.Count > 0)
             {
-                // use the first one, there should not be more than one unless we are in testing mode
                 Account account = accountsMatchingUserName[0];
 
-                // check the password
+                // Hash the entered password with the retrieved salt
+                string hashedPassword = Hashing.GenerateHash(pass, account.Salt);
+                
 
-                // hash user input
-                string passwordHashed = Hashing.GenerateHash(pass, account.Salt);
-
-                // does it match the one in the db?
-                bool match = passwordHashed.Equals(account.Password);
-
-                if(match)
+                // Check if the hashed password matches the one stored in the database
+                if (hashedPassword.Equals(account.Password))
                 {
-                    MainScreen mainScreen = new MainScreen();
+                    
+                    MainScreen mainScreen = new MainScreen(account.AccessLevel);
                     mainScreen.Show();
+                    
+ 
                 }
                 else
                 {
-                    MessageBox.Show("password did not match");
+                    MessageBox.Show("Password did not match.");
                 }
-
-
             }
             else
             {
-                MessageBox.Show("username does not exist");
+                MessageBox.Show("Username does not exist.");
             }
-
-            
         }
+
     }
+    
 }

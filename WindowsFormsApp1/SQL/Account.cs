@@ -25,7 +25,7 @@ namespace WindowsFormsApp1.SQL
         /// <param name="username"></param>
         /// <param name="password"></param>
         /// <param name="accessLevel"></param>
-        /// <param name="Salt"></param>
+        /// <param name="salt"></param>
         /// <returns></returns>
         public static void CreateAccount(string username, string password, int accessLevel)
         {
@@ -38,13 +38,14 @@ namespace WindowsFormsApp1.SQL
             using (connection)
             {
                 connection.Open();
-                string query = "INSERT INTO `neaschema`.`account` ( `UserName`, `password`, `accessLevel`, `salt`) VALUES (@username, @password, @accessLevel, @salt);\r\n";
+                string query = "INSERT INTO `neaschema`.`account` ( `UserName`, `password`, `accessLevel`, `salt`, ) VALUES (@username, @password, @accessLevel, @salt);\r\n";
                 MySqlCommand command = new MySqlCommand(query, connection);
 
                 command.Parameters.AddWithValue("@username", username);
                 command.Parameters.AddWithValue("@password", passwordHashed);
                 command.Parameters.AddWithValue("@accessLevel", accessLevel);
                 command.Parameters.AddWithValue("@salt", salt);
+
                 // sends to my sql
                 command.ExecuteNonQuery();
             }

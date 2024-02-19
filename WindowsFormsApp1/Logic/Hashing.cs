@@ -21,6 +21,8 @@ namespace WindowsFormsApp1.Logic
             return wordresult;
         }
 
+        
+
         internal static string Createsalt()
         {
             int length = 32;

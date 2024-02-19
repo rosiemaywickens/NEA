@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using WindowsFormsApp1.Logic;
+using WindowsFormsApp1.SQL;
 
 namespace WindowsFormsApp1.UI
 {
@@ -16,13 +17,20 @@ namespace WindowsFormsApp1.UI
 
         public enum Screen
         {
-            InputPrescription, SearchPrescription, CheckStock, ManageStock
+            InputPrescription, SearchPrescription, CheckStock, ManageStock, settings
         }
 
-        public MainScreen()
+        public MainScreen(int access)
         {
             InitializeComponent();
+            if (access == 0)
+            {
+                button1.Visible = false;
+                button4.Visible = false;
+                button5.Visible = false;
+            }
         }
+         
 
         private void MainScreen_Load(object sender, EventArgs e)
         {
@@ -51,6 +59,9 @@ namespace WindowsFormsApp1.UI
                     //
                     userControl = new ManageStock();
                     break;
+                case Screen.settings:
+                    userControl = new settings();
+                    break;
 
             }
 
@@ -76,6 +87,11 @@ namespace WindowsFormsApp1.UI
         private void button4_Click(object sender, EventArgs e)
         {
             SwitchScreeen(Screen.ManageStock);
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            SwitchScreeen(Screen.settings);
         }
     }
 }

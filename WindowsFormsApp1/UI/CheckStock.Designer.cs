@@ -45,6 +45,7 @@
             this.searchbox2.Name = "searchbox2";
             this.searchbox2.Size = new System.Drawing.Size(642, 31);
             this.searchbox2.TabIndex = 0;
+            this.searchbox2.TextChanged += new System.EventHandler(this.searchbox2_TextChanged);
             // 
             // label1
             // 
@@ -119,6 +120,7 @@
             this.Controls.Add(this.searchbox2);
             this.Name = "CheckStock";
             this.Size = new System.Drawing.Size(2211, 1142);
+            this.Load += new System.EventHandler(this.CheckStock_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

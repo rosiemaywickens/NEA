@@ -18,7 +18,7 @@ namespace WindowsFormsApp1.UI
         private void surnamecheck_CheckedChanged(object sender, EventArgs e)
         {
             prenum.Checked = false;
-            
+            //bith cant be checked at once -->troublr shooting
 
         }
 
@@ -35,6 +35,7 @@ namespace WindowsFormsApp1.UI
 
         public bool validateprescriptionnumber(string ep)
         {
+            //handle errors to prevent code crashing
             try
             {
                 int x = Convert.ToInt32(ep);
@@ -123,6 +124,7 @@ namespace WindowsFormsApp1.UI
         {
             //
         }
+        //shows outputs
         private void PopulateResultsGrid(prescriptions prescription)
         {
             resultsgrid.Rows.Add(

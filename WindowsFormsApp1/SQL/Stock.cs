@@ -6,6 +6,7 @@ using System.Linq;
 using System.Management.Instrumentation;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 using static Google.Protobuf.Reflection.SourceCodeInfo.Types;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
 
@@ -38,9 +39,54 @@ namespace WindowsFormsApp1.SQL
 
 
         }
- 
-        
-        
+        public static ReadOnlyCollection<Stock> ListStock(int searchTerm)
+        {
+            List<Stock> stockList = new List<Stock>();
+
+            MySqlConnection connection = Database.Connection();
+
+            try
+            {
+                connection.Open();
+
+                string query = "SELECT * FROM `neaschema`.`stock` WHERE `MedicineID` LIKE @searchTerm";
+                MySqlCommand command = new MySqlCommand(query, connection);
+                command.Parameters.AddWithValue("@searchTerm", "%" + searchTerm + "%");
+
+                using (var reader = command.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        Stock stockItem = CreateStockFromDbRow(reader);
+                        stockList.Add(stockItem);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                // Handle exceptions (e.g., log the error)
+                Console.WriteLine($"Error listing stock: {ex.Message}");
+            }
+            finally
+            {
+                connection.Close();
+            }
+
+            return new ReadOnlyCollection<Stock>(stockList);
+        }
+
+        private static Stock CreateStockFromDbRow(MySqlDataReader reader)
+        {
+            Stock stockItem = new Stock
+            {
+                medicineID = reader.GetInt32("MedicineId"),
+                locationID = reader.GetInt32("LocationId"),
+                amount = reader.GetInt32("Amount")
+            };
+            return stockItem;
+        }
+
+
 
 
 
@@ -65,7 +111,7 @@ namespace WindowsFormsApp1.SQL
             using (connection4)
             {
                 connection4.Open();
-                string query = "SELECT * FROM `neaschema`.`medicines` WHERE medname LIKE @medname";
+                string query = "SELECT * FROM `neaschema`.`medicine` WHERE medname LIKE @medname";
                 MySqlCommand command = new MySqlCommand(query, connection4);
                 command.Parameters.AddWithValue("@medname", " % " + med + " % ");
 

@@ -40,7 +40,7 @@ namespace WindowsFormsApp1.SQL
             using (connection)
             {
                 connection.Open();
-                string query = "INSERT INTO `neaschema`.`account` ( `UserName`, `password`, `accessLevel`, `salt`, ) VALUES (@username, @password, @accessLevel, @salt);\r\n";
+                string query = "INSERT INTO `neaschema`.`account` ( `UserName`, `password`, `accessLevel`, `salt`) VALUES (@username, @password, @accessLevel, @salt);\r\n";
                 MySqlCommand command = new MySqlCommand(query, connection);
 
                 command.Parameters.AddWithValue("@username", username);

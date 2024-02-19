@@ -12,4 +12,23 @@ namespace WindowsFormsApp1.Logic
 
         string CreateSalt();
     }
+    public interface Iaccount 
+    { 
+    
+
+    }
+
+
+
+
+
+
+
+
+
+
+
+
 }
+
+

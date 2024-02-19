@@ -54,15 +54,14 @@ namespace WindowsFormsApp1.UI
             string pass1 = password1.Text;
             string pass2 = password2.Text;
             string pass3 = userbox.Text;
-            if (!validatepasswords(pass1,pass2))
+            if (validatepasswords(pass1, pass2))
             {
-                password2.Text = ("passwords dont match");
+                Account.CreateAccount(pass3, pass1, 1);
             }
             else
             {
-                Account.CreateAccount(pass1, pass2, 1);
+          
             }
-        
             
         
         

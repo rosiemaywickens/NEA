@@ -23,7 +23,7 @@ namespace WindowsFormsApp1.UI
         public MainScreen(int access)
         {
             InitializeComponent();
-            if (access == 0)
+            if (access == 1)
             {
                 button1.Visible = false;
                 button4.Visible = false;

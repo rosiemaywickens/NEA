@@ -32,8 +32,10 @@ namespace WindowsFormsApp1.SQL
             // INSERT INTO `neaschema`.`account` (, `UserName`, `password`, `accessLevel`, `salt`) VALUES ('test', '1111', '1', '2222');
 
             MySqlConnection connection = Database.Connection();
-            string salt = Hashing.Createsalt();
-            string passwordHashed = Hashing.GenerateHash(password, salt);
+            IHashing hasher = new Hashing();
+
+            string salt = hasher.CreateSalt();
+            string passwordHashed = hasher.GenerateHash(password, salt);
 
             using (connection)
             {

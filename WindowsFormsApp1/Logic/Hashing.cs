@@ -9,9 +9,9 @@ using System.Security.Cryptography;
 
 namespace WindowsFormsApp1.Logic
 {
-    internal static class Hashing
+    public class Hashing : IHashing
     {
-        internal static string GenerateHash(string UpassWord, string Salt)
+        public string GenerateHash(string UpassWord, string Salt)
         {
             string bow = UpassWord + Salt;
             byte[] bytechunks = Encoding.UTF8.GetBytes(bow);
@@ -21,16 +21,16 @@ namespace WindowsFormsApp1.Logic
             return wordresult;
         }
 
-        
 
-        internal static string Createsalt()
+
+        public string CreateSalt()
         {
             int length = 32;
             byte[] chomps = new byte[length];
             Random r = new Random();
             for (int i = 0; i < length; i++)
             {
-               
+
                 int x = r.Next(65, 90);
                 chomps[i] = (byte)x;
 

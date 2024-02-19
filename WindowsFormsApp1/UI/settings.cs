@@ -54,7 +54,7 @@ namespace WindowsFormsApp1.UI
             string pass1 = password1.Text;
             string pass2 = password2.Text;
             string pass3 = userbox.Text;
-            if (!validatepasswords(x,y))
+            if (!validatepasswords(pass1,pass2))
             {
                 password2.Text = ("passwords dont match");
             }

@@ -52,7 +52,8 @@ namespace WindowsFormsApp1
                 Account account = accountsMatchingUserName[0];
 
                 // Hash the entered password with the retrieved salt
-                string hashedPassword = Hashing.GenerateHash(pass, account.Salt);
+                IHashing hasher = new Hashing();
+                string hashedPassword = hasher.GenerateHash(pass, account.Salt);
                 
 
                 // Check if the hashed password matches the one stored in the database

@@ -14,7 +14,7 @@ namespace WindowsFormsApp1.SQL
 
         public static MySqlConnection Connection()
         {
-            MySqlConnection connection = new MySqlConnection(@"Server=localhost; Database = nea; UID= root; Password= root");
+            MySqlConnection connection = new MySqlConnection(@"Server=localhost; Database = nea2; UID= root; Password= root");
             return connection;
 
         }

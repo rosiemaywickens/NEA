@@ -30,81 +30,48 @@
         {
             this.searchbox2 = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.y = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.two = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.three = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.brand = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewStocks = new System.Windows.Forms.DataGridView();
             this.enter = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewStocks)).BeginInit();
             this.SuspendLayout();
             // 
             // searchbox2
             // 
-            this.searchbox2.Location = new System.Drawing.Point(132, 187);
+            this.searchbox2.Location = new System.Drawing.Point(66, 97);
+            this.searchbox2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.searchbox2.Name = "searchbox2";
-            this.searchbox2.Size = new System.Drawing.Size(642, 31);
+            this.searchbox2.Size = new System.Drawing.Size(323, 20);
             this.searchbox2.TabIndex = 0;
             this.searchbox2.TextChanged += new System.EventHandler(this.searchbox2_TextChanged);
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(127, 150);
+            this.label1.Location = new System.Drawing.Point(64, 78);
+            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(279, 25);
+            this.label1.Size = new System.Drawing.Size(138, 13);
             this.label1.TabIndex = 1;
             this.label1.Text = "seach medications by name";
             // 
-            // dataGridView1
+            // dataGridViewStocks
             // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.y,
-            this.two,
-            this.three,
-            this.brand});
-            this.dataGridView1.Location = new System.Drawing.Point(132, 245);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.RowHeadersWidth = 82;
-            this.dataGridView1.RowTemplate.Height = 33;
-            this.dataGridView1.Size = new System.Drawing.Size(1044, 150);
-            this.dataGridView1.TabIndex = 2;
-            this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
-            // 
-            // y
-            // 
-            this.y.HeaderText = "medicine";
-            this.y.MinimumWidth = 10;
-            this.y.Name = "y";
-            this.y.Width = 200;
-            // 
-            // two
-            // 
-            this.two.HeaderText = "dose";
-            this.two.MinimumWidth = 10;
-            this.two.Name = "two";
-            this.two.Width = 200;
-            // 
-            // three
-            // 
-            this.three.HeaderText = "location";
-            this.three.MinimumWidth = 10;
-            this.three.Name = "three";
-            this.three.Width = 200;
-            // 
-            // brand
-            // 
-            this.brand.HeaderText = "brand";
-            this.brand.MinimumWidth = 10;
-            this.brand.Name = "brand";
-            this.brand.Width = 200;
+            this.dataGridViewStocks.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewStocks.Location = new System.Drawing.Point(66, 127);
+            this.dataGridViewStocks.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.dataGridViewStocks.Name = "dataGridViewStocks";
+            this.dataGridViewStocks.RowHeadersWidth = 82;
+            this.dataGridViewStocks.RowTemplate.Height = 33;
+            this.dataGridViewStocks.Size = new System.Drawing.Size(884, 300);
+            this.dataGridViewStocks.TabIndex = 2;
+            this.dataGridViewStocks.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
             // enter
             // 
-            this.enter.Location = new System.Drawing.Point(811, 187);
+            this.enter.Location = new System.Drawing.Point(402, 93);
+            this.enter.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.enter.Name = "enter";
-            this.enter.Size = new System.Drawing.Size(75, 31);
+            this.enter.Size = new System.Drawing.Size(67, 26);
             this.enter.TabIndex = 3;
             this.enter.Text = "enter";
             this.enter.UseVisualStyleBackColor = true;
@@ -112,16 +79,17 @@
             // 
             // CheckStock
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.enter);
-            this.Controls.Add(this.dataGridView1);
+            this.Controls.Add(this.dataGridViewStocks);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.searchbox2);
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "CheckStock";
-            this.Size = new System.Drawing.Size(2211, 1142);
+            this.Size = new System.Drawing.Size(1012, 594);
             this.Load += new System.EventHandler(this.CheckStock_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewStocks)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -131,11 +99,7 @@
 
         private System.Windows.Forms.TextBox searchbox2;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn y;
-        private System.Windows.Forms.DataGridViewTextBoxColumn two;
-        private System.Windows.Forms.DataGridViewTextBoxColumn three;
-        private System.Windows.Forms.DataGridViewTextBoxColumn brand;
+        private System.Windows.Forms.DataGridView dataGridViewStocks;
         private System.Windows.Forms.Button enter;
     }
 }

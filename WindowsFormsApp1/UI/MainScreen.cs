@@ -82,6 +82,9 @@ namespace WindowsFormsApp1.UI
         private void button3_Click(object sender, EventArgs e)
         {
             SwitchScreeen(Screen.CheckStock);
+
+            //StockCheck stock = new StockCheck();
+            //stock.Show();
         }
 
         private void button4_Click(object sender, EventArgs e)

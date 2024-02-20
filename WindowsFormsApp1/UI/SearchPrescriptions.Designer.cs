@@ -45,9 +45,10 @@
             // surnamecheck
             // 
             this.surnamecheck.AutoSize = true;
-            this.surnamecheck.Location = new System.Drawing.Point(56, 93);
+            this.surnamecheck.Location = new System.Drawing.Point(28, 48);
+            this.surnamecheck.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.surnamecheck.Name = "surnamecheck";
-            this.surnamecheck.Size = new System.Drawing.Size(156, 29);
+            this.surnamecheck.Size = new System.Drawing.Size(80, 17);
             this.surnamecheck.TabIndex = 0;
             this.surnamecheck.Text = "by surname";
             this.surnamecheck.UseVisualStyleBackColor = true;
@@ -56,9 +57,10 @@
             // prenum
             // 
             this.prenum.AutoSize = true;
-            this.prenum.Location = new System.Drawing.Point(56, 128);
+            this.prenum.Location = new System.Drawing.Point(28, 67);
+            this.prenum.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.prenum.Name = "prenum";
-            this.prenum.Size = new System.Drawing.Size(269, 29);
+            this.prenum.Size = new System.Drawing.Size(135, 17);
             this.prenum.TabIndex = 1;
             this.prenum.Text = "by prescription number:";
             this.prenum.UseVisualStyleBackColor = true;
@@ -67,25 +69,28 @@
             // labelsearch
             // 
             this.labelsearch.AutoSize = true;
-            this.labelsearch.Location = new System.Drawing.Point(51, 53);
+            this.labelsearch.Location = new System.Drawing.Point(26, 28);
+            this.labelsearch.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.labelsearch.Name = "labelsearch";
-            this.labelsearch.Size = new System.Drawing.Size(284, 25);
+            this.labelsearch.Size = new System.Drawing.Size(139, 13);
             this.labelsearch.TabIndex = 3;
             this.labelsearch.Text = "search for prescriptiopns by:";
             // 
             // searchbox
             // 
-            this.searchbox.Location = new System.Drawing.Point(56, 174);
+            this.searchbox.Location = new System.Drawing.Point(28, 90);
+            this.searchbox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.searchbox.Name = "searchbox";
-            this.searchbox.Size = new System.Drawing.Size(310, 31);
+            this.searchbox.Size = new System.Drawing.Size(157, 20);
             this.searchbox.TabIndex = 4;
             this.searchbox.TextChanged += new System.EventHandler(this.searchbox_TextChanged);
             // 
             // enbut
             // 
-            this.enbut.Location = new System.Drawing.Point(56, 227);
+            this.enbut.Location = new System.Drawing.Point(28, 118);
+            this.enbut.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.enbut.Name = "enbut";
-            this.enbut.Size = new System.Drawing.Size(105, 45);
+            this.enbut.Size = new System.Drawing.Size(52, 23);
             this.enbut.TabIndex = 5;
             this.enbut.Text = "confirm";
             this.enbut.UseVisualStyleBackColor = true;
@@ -94,9 +99,10 @@
             // searcherrors
             // 
             this.searcherrors.AutoSize = true;
-            this.searcherrors.Location = new System.Drawing.Point(189, 227);
+            this.searcherrors.Location = new System.Drawing.Point(94, 118);
+            this.searcherrors.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.searcherrors.Name = "searcherrors";
-            this.searcherrors.Size = new System.Drawing.Size(0, 25);
+            this.searcherrors.Size = new System.Drawing.Size(0, 13);
             this.searcherrors.TabIndex = 6;
             // 
             // resultsgrid
@@ -107,11 +113,12 @@
             this.w,
             this.e,
             this.r});
-            this.resultsgrid.Location = new System.Drawing.Point(56, 330);
+            this.resultsgrid.Location = new System.Drawing.Point(28, 172);
+            this.resultsgrid.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.resultsgrid.Name = "resultsgrid";
             this.resultsgrid.RowHeadersWidth = 82;
             this.resultsgrid.RowTemplate.Height = 33;
-            this.resultsgrid.Size = new System.Drawing.Size(1079, 290);
+            this.resultsgrid.Size = new System.Drawing.Size(880, 247);
             this.resultsgrid.TabIndex = 7;
             this.resultsgrid.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.resultsgrid_CellContentClick);
             // 
@@ -145,7 +152,7 @@
             // 
             // SearchPrescriptions
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.resultsgrid);
             this.Controls.Add(this.searcherrors);
@@ -154,8 +161,9 @@
             this.Controls.Add(this.labelsearch);
             this.Controls.Add(this.prenum);
             this.Controls.Add(this.surnamecheck);
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "SearchPrescriptions";
-            this.Size = new System.Drawing.Size(1504, 1064);
+            this.Size = new System.Drawing.Size(952, 553);
             this.Load += new System.EventHandler(this.SearchPrescriptions_Load);
             ((System.ComponentModel.ISupportInitialize)(this.resultsgrid)).EndInit();
             this.ResumeLayout(false);

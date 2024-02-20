@@ -6,6 +6,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Security.Cryptography.X509Certificates;
+using System.Security.Principal;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -20,6 +21,8 @@ namespace WindowsFormsApp1
         public Form1()
         {
             InitializeComponent();
+            this.Size = new Size(1012, 594);
+            this.StartPosition = FormStartPosition.CenterScreen;
         }
 
         private void textBox1_TextChanged(object sender, EventArgs e)
@@ -61,6 +64,8 @@ namespace WindowsFormsApp1
                 {
                     
                     MainScreen mainScreen = new MainScreen(account.AccessLevel);
+                    mainScreen.Size = new Size(1012, 594);
+                    mainScreen.StartPosition = FormStartPosition.CenterScreen;
                     mainScreen.Show();
                     
  
@@ -76,6 +81,11 @@ namespace WindowsFormsApp1
             }
         }
 
+        private void button2_Click(object sender, EventArgs e)
+        {
+            Register register = new Register();
+            register.Show();
+        }
     }
     
 }

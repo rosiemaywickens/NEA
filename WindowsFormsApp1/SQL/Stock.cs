@@ -19,21 +19,31 @@ namespace WindowsFormsApp1.SQL
         public int medicineID { get; set; } 
 
 
-        public static void addstock(int medicineID, int LocationID , int amount)
+        public static void addstock(string medicineName, int LocationID , int amount, string brand)
         {
             MySqlConnection connection = Database.Connection();
             using (connection) 
             {
                 connection.Open();
-                string query = "INSERT INTO `neaschema`.`stock` ( `MedicineId`, `locationId`, `amount` ) VALUES (@medicine, @location, @amount);\r\n";
+                string query = "INSERT INTO stock (MedicineName, locationID, amount, Brand) VALUES (@medicine, @location, @amount, @brand)";
                 MySqlCommand command = new MySqlCommand(query, connection);
 
-                command.Parameters.AddWithValue("@medicine", medicineID);
+                command.Parameters.AddWithValue("@medicine", medicineName);
                 command.Parameters.AddWithValue("@location", LocationID);
                 command.Parameters.AddWithValue("@amount", amount);
-                 
-                command.ExecuteNonQuery();
-              
+                command.Parameters.AddWithValue("@brand", brand);
+
+                int rowsAffected = command.ExecuteNonQuery();
+
+                if (rowsAffected > 0)
+                {
+                    MessageBox.Show("Stock added successfully.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                else
+                {
+                    MessageBox.Show("No stock was added.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+
             }
            
 
@@ -49,7 +59,7 @@ namespace WindowsFormsApp1.SQL
             {
                 connection.Open();
 
-                string query = "SELECT * FROM `neaschema`.`stock` WHERE `MedicineID` LIKE @searchTerm";
+                string query = "SELECT * FROM stock WHERE MedicineID LIKE @searchTerm";
                 MySqlCommand command = new MySqlCommand(query, connection);
                 command.Parameters.AddWithValue("@searchTerm", "%" + searchTerm + "%");
 
@@ -111,7 +121,7 @@ namespace WindowsFormsApp1.SQL
             using (connection4)
             {
                 connection4.Open();
-                string query = "SELECT * FROM `neaschema`.`medicine` WHERE medname LIKE @medname";
+                string query = "SELECT * FROM medicine WHERE medname LIKE @medname";
                 MySqlCommand command = new MySqlCommand(query, connection4);
                 command.Parameters.AddWithValue("@medname", " % " + med + " % ");
 

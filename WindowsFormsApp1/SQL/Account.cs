@@ -27,6 +27,7 @@ namespace WindowsFormsApp1.SQL
         /// <param name="accessLevel"></param>
         /// <param name="salt"></param>
         /// <returns></returns>
+        /// 
         public static void CreateAccount(string username, string password, int accessLevel)
         {
             // INSERT INTO `neaschema`.`account` (, `UserName`, `password`, `accessLevel`, `salt`) VALUES ('test', '1111', '1', '2222');
@@ -37,32 +38,30 @@ namespace WindowsFormsApp1.SQL
             string salt = hasher.CreateSalt();
             string passwordHashed = hasher.GenerateHash(password, salt);
 
-            using (connection)
+            try
             {
-                connection.Open();
-                string query = "INSERT INTO `neaschema`.`account` ( `UserName`, `password`, `accessLevel`, `salt`) VALUES (@username, @password, @accessLevel, @salt);\r\n";
-                MySqlCommand command = new MySqlCommand(query, connection);
+                using (connection)
+                {
+                    connection.Open();
+                    string query = "INSERT INTO account (UserName, password, accessLevel, salt) VALUES (@username, @password, @accessLevel, @salt);";
+                    MySqlCommand command = new MySqlCommand(query, connection);
 
-                command.Parameters.AddWithValue("@username", username);
-                command.Parameters.AddWithValue("@password", passwordHashed);
-                command.Parameters.AddWithValue("@accessLevel", accessLevel);
-                command.Parameters.AddWithValue("@salt", salt);
+                    command.Parameters.AddWithValue("@username", username);
+                    command.Parameters.AddWithValue("@password", passwordHashed);
+                    command.Parameters.AddWithValue("@accessLevel", accessLevel);
+                    command.Parameters.AddWithValue("@salt", salt);
 
-                // sends to my sql
-                command.ExecuteNonQuery();
+                    command.ExecuteNonQuery();
+
+                    // create new salt, store new salt , create passwordhash, store hash Not passord
+                }
             }
-
-            // create new salt, store new salt , create passwordhash, store hash Not passord
-
-
-
-
+            catch (Exception ex)
+            {
+                Console.WriteLine("An error occurred: " + ex.Message);
+            }
         }
-        //
-        /// <summary>
-        /// List all accounts in DB
-        /// </summary>
-        /// <returns></returns>
+
         public static ReadOnlyCollection<Account> List()
         {
             List<Account> result = new List<Account>();
@@ -88,8 +87,6 @@ namespace WindowsFormsApp1.SQL
 
         }
 
-
-
         public static ReadOnlyCollection<Account> ListByUserName(string userName)
         {
             List<Account> result = new List<Account>();
@@ -98,7 +95,7 @@ namespace WindowsFormsApp1.SQL
             using (connection)
             {
                 connection.Open();
-                string query = "SELECT * FROM `neaschema`.`account` WHERE username = @username";
+                string query = "SELECT * FROM account WHERE username = @username";
                 MySqlCommand command = new MySqlCommand(query, connection);
                 command.Parameters.AddWithValue("@username", userName);
 
@@ -116,19 +113,14 @@ namespace WindowsFormsApp1.SQL
 
         }
 
-
-        /// <summary>
-        /// turn row into object
-        /// </summary>
-        /// <param name="reader"></param>
         private static Account CreateAccountFromDbRow(MySqlDataReader reader)
         {
             Account account = new Account
             {
-                UserName = reader.GetString("UserName"),
-                Password = reader.GetString("Password"),
-                AccessLevel = reader.GetInt32("accessLevel"),
-                Salt = reader.GetString("salt")
+                UserName = reader["UserName"] != DBNull.Value ? reader.GetString("UserName") : string.Empty,
+                Password = reader["Password"] != DBNull.Value ? reader.GetString("Password") : string.Empty,
+                AccessLevel = reader["accessLevel"] != DBNull.Value ? reader.GetInt32("accessLevel") : 0,
+                Salt = reader["salt"] != DBNull.Value ? reader.GetString("salt") : string.Empty
             };
             return account;
         }

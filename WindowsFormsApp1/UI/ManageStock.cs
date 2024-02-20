@@ -23,8 +23,11 @@ namespace WindowsFormsApp1.UI
         }
 
         public int ValidatedMedicineId { get; private set; }
+        public string ValidatedMedicineName { get; private set; }
         public int ValidatedLocationId { get; private set; }
         public int ValidatedAmount { get; private set; }
+        public string ValidatedBrand { get; private set; }
+
 
         private bool allInputsValid = false;
 
@@ -78,19 +81,19 @@ namespace WindowsFormsApp1.UI
             errorbox.Visible = false;
             allInputsValid = false;
 
-            if (ValidateMedicineId(medidbox.Text.Trim()) &&
-                ValidateLocationId(lidbox.Text.Trim()) &&
+            if (ValidateLocationId(lidbox.Text.Trim()) &&
                 ValidateAmount(AmountBox.Text.Trim()))
             {
                 allInputsValid = true;
 
                 // Set public properties with the validated values
-                ValidatedMedicineId = Convert.ToInt32(medidbox.Text);
                 ValidatedLocationId = Convert.ToInt32(lidbox.Text);
                 ValidatedAmount = Convert.ToInt32(AmountBox.Text);
+                ValidatedBrand = BrandBox.Text;
+                ValidatedMedicineName = NameBox.Text;
 
                 // If all validations pass, add stock
-                Stock.addstock(ValidatedMedicineId, ValidatedLocationId, ValidatedAmount);
+                Stock.addstock(ValidatedMedicineName, ValidatedLocationId, ValidatedAmount, ValidatedBrand);
             }
         }
 
@@ -151,6 +154,11 @@ namespace WindowsFormsApp1.UI
         }
 
         private void errorbox_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label6_Click(object sender, EventArgs e)
         {
 
         }

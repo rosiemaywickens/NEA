@@ -11,14 +11,19 @@ using WindowsFormsApp1.SQL;
 
 namespace WindowsFormsApp1.UI
 {
-    public partial class settings : UserControl
+    public partial class Register : Form
     {
-        public settings()
+        public Register()
         {
             InitializeComponent();
         }
 
-        private void label1_Click(object sender, EventArgs e)
+        private void password1_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void password2_TextChanged(object sender, EventArgs e)
         {
 
         }
@@ -26,27 +31,6 @@ namespace WindowsFormsApp1.UI
         private void userbox_TextChanged(object sender, EventArgs e)
         {
 
-        }
-        //check passwords match
-        //user name hasnt been used before
-        //passord is over 8 digits
-        public bool validatepasswords(string x, string y)
-        {
-            if (x == y)
-            {
-                if(x.Length <= 8)
-                {
-                    return true;
-                }
-                else 
-                { 
-                    return false; 
-                }  
-            }
-            else
-            {
-                return false;
-            }
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -58,18 +42,15 @@ namespace WindowsFormsApp1.UI
             {
                 MessageBox.Show("Passwords do not match. Re-enter");
             }
+            else if (pass1.Length <8 && pass2.Length <8)
+            {
+                MessageBox.Show("Password is less than 7 characters");
+            }
             else
             {
                 Account.CreateAccount(pass3, pass1, 1);
+                MessageBox.Show("Account Successfully Created");
             }
-            
-        
-        
-        }
-
-        private void password2_TextChanged(object sender, EventArgs e)
-        {
-
         }
     }
 }

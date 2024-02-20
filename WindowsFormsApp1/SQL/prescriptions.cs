@@ -11,7 +11,7 @@ using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
 
 namespace WindowsFormsApp1.SQL
 {
-    internal class prescriptions
+    public class prescriptions
     {
         public int PrescriptionID { get; set; }
         public int MedicineID { get; set; }
@@ -27,7 +27,7 @@ namespace WindowsFormsApp1.SQL
             using (connection)
             {
                 connection.Open();
-                string query = "INSERT INTO `neaschema`.`prescriptions` ( `PrescriptionID`,`MedicineID`, `ExpiryDate`, `CustomerSurname` ) VALUES (@PrescriptionID,@MedicineID,@ExpiryDate,@Customersurname);\r\n";
+                string query = "INSERT INTO `neaschema`.`prescriptions` ( `PrescriptionID`,`MedicineID`, `ExpiryDate`, `CustomerSurname` ) VALUES (@PrescriptionID,@MedicineID,@ExpiryDate,@Customersurname)";
                 MySqlCommand command = new MySqlCommand(query, connection);
 
                 command.Parameters.AddWithValue("@PrescriptionID", PrescriptionID);

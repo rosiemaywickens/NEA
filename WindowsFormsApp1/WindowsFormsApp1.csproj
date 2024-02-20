@@ -137,6 +137,12 @@
     <Compile Include="UI\ManageStock.Designer.cs">
       <DependentUpon>ManageStock.cs</DependentUpon>
     </Compile>
+    <Compile Include="UI\Register.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Register.Designer.cs">
+      <DependentUpon>Register.cs</DependentUpon>
+    </Compile>
     <Compile Include="UI\SearchPrescriptions.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -172,6 +178,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UI\ManageStock.resx">
       <DependentUpon>ManageStock.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Register.resx">
+      <DependentUpon>Register.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\SearchPrescriptions.resx">
       <DependentUpon>SearchPrescriptions.cs</DependentUpon>
